@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <script src="./src/script.js"></script>
+      <link rel="stylesheet" href="./css/styles.css">
+    <title></title>
+  </head>
+  <body onload="init()">
+<hr>
+    <div class="container">
+
+      <div class="row">
+        <div class="col top">
+          <textarea class="nocity" style="width:200px; height: 30px;" id="city" placeholder="введите ваш город"></textarea>
+          <button class="nocity" onclick="saveCity('city');">Сохранить</button>
+          <a href="#" onclick="changeCity();" id="yescity">ddd</a>
+        </div>
+      </div>
+<hr>
+      <div class="row">
+        <div class="col">
+          <div>
+            <label><input class="checkbox" id="checkbox1" type="checkbox" onclick="storeCookie();"> не звонить мне</label>
+          </div>
+
+          <div>
+            <label><input class="checkbox" id="checkbox2" type="checkbox" onclick="storeCookie();"> я прочитал и согласен с правилами пользования сервисом</label>
+          </div>
+
+          <div >
+            <label><input class="checkbox" id="checkbox3" type="checkbox"  onclick="storeCookie();"> я не выбираю эту галочку</label>
+          </div>
+
+          <div >
+            <label><input class="checkbox" id="checkbox4" type="checkbox"  onclick="storeCookie();"> я подтверждаю, что свобода в интернете — это возможность выбирать галочки</label>
+          </div>
+
+          <div>
+            <label><input class="checkbox" id="checkbox5" type="checkbox" onclick="storeCookie();"> мне больше 12 лет</label>
+          </div>
+
+          <div>
+            <label><input class="checkbox" id="checkbox6" type="checkbox" onclick="storeCookie();"> это задание выполнено правильно</label>
+          </div>
+          <button onclick="rstCheckbox();">Сбросить чекбоксы</button>
+
+<hr>
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </body>
+</html>
