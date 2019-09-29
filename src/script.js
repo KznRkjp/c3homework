@@ -28,6 +28,7 @@ function init(){
   } else{
     hideForm();
   }
+  checkCookie();
 };
 
 function checkboxToArray(){
@@ -49,30 +50,41 @@ function storeCookie(){
 }
 
 function createCookie(cookiename, cookievalue, hours) {
-    document.cookie = "user=Max; max-age=3500";
-    document.cookie = "\"" + encodeURIComponent(cookiename)+ "=" + encodeURIComponent(cookievalue)+"; max-age=0";
     var date = new Date();
     date.setTime(date.getTime() + Number(hours) * 3600 * 1000);
     var cookie = encodeURIComponent(cookiename) + "=" + encodeURIComponent(cookievalue) + "; expires = " + date.toGMTString();
-    //var cookie = "\"" + encodeURIComponent(cookiename) + "=" + encodeURIComponent(cookievalue) + "; expires = " + date.toGMTString() + "; path=/\"";
     console.log(cookie)
     document.cookie = cookie;
-
-    console.log(document.cookie.split(';'));
-
-
 }
 
 
 
 function checkCookie() {
-  var user = getCookie("checkboxcookie");
-  if (user != "") {
-    alert("Welcome again " + user);
-  } else {
-    user = prompt("Please enter your name:", "");
-    if (user != "" && user != null) {
-      setCookie("username", user, 365);
-    }
-  }
-}
+  var arr = JSON.parse(getCookie("checkboxcookie"));
+  if (arr.length > 0){
+    document.querySelectorAll('[class=checkbox]').forEach(element=>{
+      element.disabled = true;
+    });
+  };
+  document.querySelectorAll('[class=checkbox]').forEach(element=>{
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] === element.id) {
+            element.checked = true;
+        };
+      };
+});
+};
+
+function getCookie(name) {
+  let matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+};
+
+function rstCheckbox(){
+  document.querySelectorAll('[class=checkbox]').forEach(element=>{
+    element.checked = false;
+    element.disabled = false;
+  });
+};
